@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/step_noise.iml" filepath="$PROJECT_DIR$/step_noise.iml" />
+      <module fileurl="file://$PROJECT_DIR$/step-noise.iml" filepath="$PROJECT_DIR$/step-noise.iml" />
     </modules>
   </component>
 </project>
