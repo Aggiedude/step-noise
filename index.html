@@ -1,49 +1,108 @@
 ---
 layout: default
 ---
+<header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Brand</a>
+      </div>
 
-<h1 class="sg-h1">{{ site.title }}</h1>
-	
-<p>Boilerplate for creating components based style guides using <a href="http://jekyllrb.com">Jekyll</a>. Here is the <a href="https://github.com/jeromecoupe/jekyllstyleguide">Github repository</a> for it, should you want to have a peek at the code, fork it or report an issue.</p>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+          <li><a href="#">Link</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Link</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+</header>
+<div id="navbar">
 
-{% comment %}
+</div>
 
-{% assign entries = site.components %}
-{% for entry in entries %}
+<div id="contentContainer">
+  <h1 class="page-header">{{ site.title }}</h1>
+  <p>Boilerplate for creating components based style guides using <a href="http://jekyllrb.com">Jekyll</a>. Here is the <a href="https://github.com/jeromecoupe/jekyllstyleguide">Github repository</a> for it, should you want to have a peek at the code, fork it or report an issue.</p>
+
+  {% comment %}
+
+  {% assign entries = site.components %}
+  {% for entry in entries %}
   {% include component.html %}
-{% endfor %}
-
-{% endcomment %}
-
-{% comment %}
-
-If you want to make sure your types are grouped (file names are not enough), you could use this group_by loop instead
-
-{% assign componentsByType = site.components | group_by:"type" %}
-{% for type in componentsByType %}
-  <h3 class="sg-h2">{{ type.name | capitalize }}</h3>
-  {% for entry in type.items %}
-    {% include component.html %}
   {% endfor %}
-{% endfor %}
 
-{% endcomment %}
+  {% endcomment %}
 
-{% comment %}
+  {% comment %}
 
-If you want to use pages and/or posts to create a more complex styleguide with pages / intros for every type of components, you can use these where loops on those pages / posts instead
+  If you want to make sure your types are grouped (file names are not enough), you could use this group_by loop instead
 
-{% endcomment %}
-
-{% assign entries = site.components | where:"type","buttons" %}
-<h2 class="sg-h1">Buttons:</h2>
-{% for entry in entries %}
+  {% assign componentsByType = site.components | group_by:"type" %}
+  {% for type in componentsByType %}
+  <h3 class="h2">{{ type.name | capitalize }}</h3>
+  {% for entry in type.items %}
   {% include component.html %}
-{% endfor %}
+  {% endfor %}
+  {% endfor %}
 
-{% assign entries = site.components | where:"type","typography" %}
-<h2 class="sg-h1">Typography:</h2>
-{% for entry in entries %}
+  {% endcomment %}
+
+  {% comment %}
+
+  If you want to use pages and/or posts to create a more complex styleguide with pages / intros for every type of components, you can use these where loops on those pages / posts instead
+
+  {% endcomment %}
+
+  {% assign entries = site.components | where:"type","buttons" %}
+  <h2 class="page-header">Buttons</h2>
+  {% for entry in entries %}
   {% include component.html %}
-{% endfor %}
+  {% endfor %}
 
+  {% assign entries = site.components | where:"type","typography" %}
+  <h2 class="h1">Typography:</h2>
+  {% for entry in entries %}
+  {% include component.html %}
+  {% endfor %}
+
+</div>
